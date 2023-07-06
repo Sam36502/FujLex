@@ -1,6 +1,6 @@
 
-BIN=4RCH
-BIN_DIR=bin/lin
+BIN=fujlex
+BIN_DIR=bin
 SRC_DIR=src
 
 build:
