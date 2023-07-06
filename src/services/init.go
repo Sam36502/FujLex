@@ -10,4 +10,7 @@ func Initialise(e *echo.Echo) {
 	// Root page
 	e.GET("/", PageRoot)
 
+	// Lang Pages
+	e.GET("/lang/:"+PARAM_LANG_ID, PageSearch)
+
 }

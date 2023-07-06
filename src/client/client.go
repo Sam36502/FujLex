@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strconv"
 )
 
 type ClexiconClient struct {
@@ -25,26 +26,59 @@ func Initialise(baseUrl string) error {
 	return nil
 }
 
-func GetAllLangs() ([]Lang, error) {
-
+func getFromURL(path []string, result interface{}, params map[string]string) error {
 	// Make request
-	currURI := g_clexClient.baseURL.JoinPath("lang")
+	currURI := g_clexClient.baseURL.JoinPath(path...)
+	if params != nil {
+		q := currURI.Query()
+		for k, v := range params {
+			q.Add(k, v)
+		}
+		currURI.RawQuery = q.Encode()
+	}
+
 	resp, err := http.Get(currURI.String())
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	// Parse reponse
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
+	return json.Unmarshal(data, result)
+}
+
+func GetAllLangs() ([]Lang, error) {
 	var langs []Lang
-	err = json.Unmarshal(data, &langs)
-	if err != nil {
-		return nil, err
-	}
+	err := getFromURL(
+		[]string{"lang"},
+		&langs,
+		nil,
+	)
+	return langs, err
+}
 
-	return langs, nil
+func GetLangByID(langID uint64) (Lang, error) {
+	var lang Lang
+	err := getFromURL(
+		[]string{"lang", strconv.FormatInt(int64(langID), 10)},
+		&lang,
+		nil,
+	)
+	return lang, err
+}
+
+func SearchWords(langID uint64, query string) ([]Word, error) {
+	var words []Word
+	err := getFromURL(
+		[]string{"lang", strconv.FormatInt(int64(langID), 10), "search"},
+		&words,
+		map[string]string{
+			"q": query,
+		},
+	)
+	return words, err
 }
