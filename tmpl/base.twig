@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="/static/tachyons.css">
+
+        {% block head %}{% endblock %}
+    </head>
+    <body class="helvetica bg-near-white near-black">
+
+        <!-- Left -->
+        <div class="fl w-0 w-third-ns pa2"></div>
+        
+        <!-- Main Content -->
+        <div class="fl w-100 w-third-ns pa2">
+            <h1 class="f-headline bb b--black-10 lh-solid">{% block title %}{% endblock %}</h1>
+            {% block body %}{% endblock %}
+        </div>
+        
+        <!-- Right -->
+        <div class="fl w-0 w-third-ns"></div>
+
+        {% block scripts %}{% endblock %}
+
+    </body>
+</html>
