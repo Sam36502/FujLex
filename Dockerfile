@@ -1,9 +1,11 @@
 FROM ubuntu:latest
 
-ADD fujlex /fujlex
-ADD static /static
-ADD tmpl /tmpl
-RUN ldconfig
+COPY bin/fujlex /app/fujlex
+COPY static/ /app/static/
+COPY tmpl/ /app/tmpl
+#RUN ldconfig
 
 EXPOSE 1919
-CMD ["/fujlex"]
+
+WORKDIR /app
+CMD ["./fujlex"]

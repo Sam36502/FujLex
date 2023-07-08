@@ -1,4 +1,4 @@
-BIN = "fujlex"
+BIN = "bin/fujlex"
 IMAGE = "clexicon_web"
 CONTAINER = "lex"
 REPO = "bismarck6502/"${IMAGE}
@@ -18,11 +18,11 @@ run: build ## Runs the API locally
 	
 image: build ## Builds docker image
 	@echo "### Building Docker Image... ###"
-	@sudo docker build -t ${IMAGE} .
+	@docker build --no-cache -t ${IMAGE} .
 
 up: image ## Start docker image locally
 	@echo "### Starting Local Container... ###"
-	@sudo docker run -d \
+	@docker run -d \
 		-p	1919:1919 \
 	       	--name ${CONTAINER} \
 		-v '/home/bismarck/fujlex/static:/static' \
@@ -31,10 +31,10 @@ up: image ## Start docker image locally
 
 down: ## Stop local docker image
 	@echo "### Stopping Local Container... ###"
-	@sudo docker stop ${CONTAINER}
-	@sudo docker rm ${CONTAINER}
+	@docker stop ${CONTAINER}
+	@docker rm ${CONTAINER}
 
 publish: image ## Publishes docker image to dockerhub
 	@echo "### Publishing Docker Image... ###"
-	@sudo docker tag ${IMAGE} ${REPO}:${VERSION}
-	@sudo docker push ${REPO}:${VERSION}
+	@docker tag ${IMAGE} ${REPO}:${VERSION}
+	@docker push ${REPO}:${VERSION}
