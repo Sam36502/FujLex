@@ -9,9 +9,9 @@ This is a basic front-end for [my very simple lexicon-API](https://github.com/Sa
 
 ## To Do:
  - [X] Set up echo framework with template rendering
- - [ ] Set up proper neat error handling
- - [ ] Make lang-info / search page
+ - [X] Set up proper neat error handling
+ - [X] Make lang-info / search page
  - [ ] Make add/edit word page
  - [ ] Make add/edit lang page
  - [ ] Make add/edit tag page
- - [ ] Dockerisation babey
+ - [X] Dockerisation babey
