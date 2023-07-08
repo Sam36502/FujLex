@@ -1,0 +1,58 @@
+{% extends "base.twig" %}
+
+{% block head %}{% endblock %}
+
+{% block title %}{{lang.Name}}{% endblock %}
+
+{% block body %}
+<a href="/" class="f4 link blue hover-light-blue">Back to index</a>
+
+<h2 class="f2 light-red">Information</h2>
+<table class="collapse ma3 ba br2 b--black-10 pv2 ph3">
+    <tbody>
+        <tr class="striped--light-gray">
+            <td class="pv2 ph3"><strong>Language name</strong></td>
+            <td class="pv2 ph3">{{lang.Name}}</td>
+        </tr>
+        <tr class="striped--light-gray">
+            <td class="pv2 ph3"><strong>Unique Code</strong></td>
+            <td class="pv2 ph3"><code>{{lang.Code}}</code></td>
+        </tr>
+        {% if lang.AncestorCodes|length > 0 %}
+        <tr class="striped--light-gray">
+            <td class="pv2 ph3"><strong>Descended from:</strong></td>
+            <td class="pv2 ph3">{{lang.AncestorCodes|join(', ')}}</td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+<h2 class="f2 light-red">Description</h2>
+<p class="f5 lh-copy">
+    {{lang.Desc}}
+</p>
+
+<h2 class="f2 light-red">Search Dictionary:</h2>
+<form action="/lang/{{lang.ID}}" method="GET">
+    <div class="w-100 h3 h2-ns"> 
+        <input class="f5 button-reset ba fl black-80 bg-white ph3 lh-solid h-100 w-70 w-40-ns" type="text" name="q" placeholder="search" value={{query}}>
+        <input class="f5 button-reset bn fl black-80 bg-light-red lh-solid h-100 w-30 w-10-ns" type="submit" value="Search">
+    </div>
+</form>
+
+{% if has_query %}
+    <h3 id="lang" class="f3">Results:</h3>
+    {% if words|length > 0 %}
+
+        <ul class="list pl0">
+        {% for word in words %}{% include "lang/word_res.twig" %}{% endfor %}
+        </ul>
+
+    {% else %}
+        <i>No words found for query '{{query}}'</i>
+    {% endif %}
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

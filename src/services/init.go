@@ -1,11 +1,17 @@
 package services
 
-import "github.com/labstack/echo/v4"
+import (
+	"github.com/Sam36502/FujLex/src/view"
+	"github.com/labstack/echo/v4"
+)
 
 func Initialise(e *echo.Echo) {
 
 	// Static dir
 	e.Static("/static", "static")
+
+	// Error Pages
+	e.HTTPErrorHandler = view.CustomErrorHandler
 
 	// Root page
 	e.GET("/", PageRoot)

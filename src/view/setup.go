@@ -25,11 +25,10 @@ func InitTemplates() {
 func RenderTemplate(c echo.Context, tmplPath string, d Data) error {
 	err := g_tempEnv.Execute(tmplPath, c.Response(), d)
 
-	// TODO: Nicer error handling
 	if err != nil {
 		return c.HTML(
 			http.StatusInternalServerError,
-			fmt.Sprintf("<h2 style:'color:red'>Error: failed to render template '%s'</h2><h3>Error:</h3><p>%v</p>", tmplPath, err),
+			fmt.Sprintf("<h2 style='color:red'>Error: failed to render template '%s'</h2><h3>Error:</h3><p>%v</p>", tmplPath, err),
 		)
 	}
 

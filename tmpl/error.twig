@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+
+{% block head %}{% endblock %}
+
+{% block title %}{{code}} Error{% endblock %}
+
+{% block body %}
+    <h2 class="f2 light-red">{{msg}}</h2>
+    {% if errtext %}
+        <p class="f5 lh-copy">
+            {{errtext}}
+        </p>
+    {% endif %}
+    <a href="{{redirect_url}}" class="f4 link blue hover-light-blue">Go back</a>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

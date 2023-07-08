@@ -12,6 +12,8 @@ type ClexiconClient struct {
 	baseURL *url.URL
 }
 
+type Params map[string]string
+
 var g_clexClient ClexiconClient
 
 func Initialise(baseUrl string) error {
@@ -26,8 +28,8 @@ func Initialise(baseUrl string) error {
 	return nil
 }
 
-func getFromURL(path []string, result interface{}, params map[string]string) error {
-	// Make request
+func getFromURL(path []string, result interface{}, params Params) error {
+	// Build request
 	currURI := g_clexClient.baseURL.JoinPath(path...)
 	if params != nil {
 		q := currURI.Query()
@@ -37,12 +39,13 @@ func getFromURL(path []string, result interface{}, params map[string]string) err
 		currURI.RawQuery = q.Encode()
 	}
 
+	// Send request
 	resp, err := http.Get(currURI.String())
 	if err != nil {
 		return err
 	}
 
-	// Parse reponse
+	// Read & Parse response
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
@@ -64,9 +67,11 @@ func GetAllLangs() ([]Lang, error) {
 func GetLangByID(langID uint64) (Lang, error) {
 	var lang Lang
 	err := getFromURL(
-		[]string{"lang", strconv.FormatInt(int64(langID), 10)},
+		[]string{"lang"},
 		&lang,
-		nil,
+		Params{
+			"id": strconv.FormatInt(int64(langID), 10),
+		},
 	)
 	return lang, err
 }
@@ -76,7 +81,7 @@ func SearchWords(langID uint64, query string) ([]Word, error) {
 	err := getFromURL(
 		[]string{"lang", strconv.FormatInt(int64(langID), 10), "search"},
 		&words,
-		map[string]string{
+		Params{
 			"q": query,
 		},
 	)

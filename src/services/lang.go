@@ -2,7 +2,6 @@ package services
 
 import (
 	"fmt"
-	"net/http"
 	"strconv"
 
 	"github.com/Sam36502/FujLex/src/client"
@@ -11,33 +10,40 @@ import (
 )
 
 const (
-	PARAM_LANG_ID = "lang_id"
+	PARAM_LANG_ID      = "lang_id"
+	PARAM_SEARCH_QUERY = "q"
 )
 
 func PageSearch(c echo.Context) error {
+
+	// Get Language info
 	langID, err := strconv.ParseUint(c.Param(PARAM_LANG_ID), 10, 64)
 	if err != nil {
-		// TODO: EROR
-		return c.String(http.StatusInternalServerError, fmt.Sprintf("FAIL: %v", err))
+		return view.FailRequestWithError(c, "Invalid Lang-ID provided", err, "/")
 	}
-
 	lang, err := client.GetLangByID(langID)
 	if err != nil {
-		// TODO: EROR
-		return c.String(http.StatusInternalServerError, fmt.Sprintf("FAIL: %v", err))
+		return view.FailRequestWithError(c, fmt.Sprintf("Failed to get info for language with ID %d", langID), err, "/")
 	}
 
-	words, err := client.SearchWords(langID, c.QueryParam("q"))
-	if err != nil {
-		// TODO: EROR
-		return c.String(http.StatusInternalServerError, fmt.Sprintf("FAIL: %v", err))
+	// Search dictionary if query provided
+	var words []client.Word
+	query := c.QueryParam(PARAM_SEARCH_QUERY)
+	hasQuery := query != ""
+	if hasQuery {
+		words, err = client.SearchWords(langID, query)
+		if err != nil {
+			return view.FailRequestWithError(c, fmt.Sprintf("Query '%s' failed:", query), err, fmt.Sprint("/lang/", langID))
+		}
 	}
 
 	return view.RenderTemplate(
-		c, "search.twig",
+		c, "lang/detail.twig",
 		view.Data{
-			"words": words,
-			"lang":  lang,
+			"has_query": hasQuery,
+			"query":     query,
+			"words":     words,
+			"lang":      lang,
 		},
 	)
 }
