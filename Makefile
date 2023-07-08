@@ -14,7 +14,7 @@ build: gen ## Builds the executable for linux
 
 run: build ## Runs the API locally
 	@echo "### Starting API... ###"
-	@./${BIN}
+	@./${BIN} -d
 	
 image: build ## Builds docker image
 	@echo "### Building Docker Image... ###"

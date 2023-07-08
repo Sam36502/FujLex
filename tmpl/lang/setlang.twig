@@ -1,0 +1,28 @@
+{% extends "base.twig" %}
+
+{% block head %}{% endblock %}
+
+{% block title %}
+    {% if is_create %}
+        Create Language
+    {% else %}
+        Edit {{lang.Name}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if is_create %}
+        <a href="/" class="f4 link blue hover-light-blue">Back to index</a>
+    {% else %}
+        <a href="/lang/{{lang.ID}}" class="f4 link blue hover-light-blue">Back to lang</a>
+    {% endif %}
+
+    <form method="POST">
+        <label for="name">Language Name</label><br>
+        <input type="text" name="name" placeholder="Language Name" value="{{lang.Name}}">
+
+    </form>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

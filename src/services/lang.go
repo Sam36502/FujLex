@@ -47,3 +47,29 @@ func PageSearch(c echo.Context) error {
 		},
 	)
 }
+
+func PageSetLang(c echo.Context) error {
+	// Get Language info
+	langID_s := c.Param(PARAM_LANG_ID)
+	isCreate := langID_s == ""
+
+	var lang client.Lang
+	if !isCreate {
+		langID, err := strconv.ParseUint(langID_s, 10, 64)
+		if err != nil {
+			return view.FailRequestWithError(c, "Invalid Lang-ID provided", err, "/")
+		}
+		lang, err = client.GetLangByID(langID)
+		if err != nil {
+			return view.FailRequestWithError(c, fmt.Sprintf("Failed to get info for language with ID %d", langID), err, "/")
+		}
+	}
+
+	return view.RenderTemplate(
+		c, "lang/setlang.twig",
+		view.Data{
+			"is_create": isCreate,
+			"lang":      lang,
+		},
+	)
+}

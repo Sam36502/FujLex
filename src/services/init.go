@@ -17,6 +17,8 @@ func Initialise(e *echo.Echo) {
 	e.GET("/", PageRoot)
 
 	// Lang Pages
+	e.GET("/lang/set", PageSetLang)
+	e.GET("/lang/set/:"+PARAM_LANG_ID, PageSetLang)
 	e.GET("/lang/:"+PARAM_LANG_ID, PageSearch)
 
 }
