@@ -131,6 +131,25 @@ func PutLang(obj Lang) (uint64, error) {
 	)
 }
 
+func GetWordByID(langID uint64, wordID uint64) (Word, error) {
+	var word Word
+	err := getFromURL(
+		[]string{"lang", strconv.FormatInt(int64(langID), 10), "word"},
+		&word,
+		Params{
+			"id": strconv.FormatInt(int64(wordID), 10),
+		},
+	)
+	return word, err
+}
+
+func PutWord(obj Word) (uint64, error) {
+	return putToURL(
+		[]string{"lang", strconv.FormatInt(int64(*obj.Language.ID), 10), "word"},
+		obj,
+	)
+}
+
 func SearchWords(langID uint64, query string) ([]Word, error) {
 	var words []Word
 	err := getFromURL(

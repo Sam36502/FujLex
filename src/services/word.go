@@ -12,45 +12,10 @@ import (
 )
 
 const (
-	PARAM_LANG_ID      = "lang_id"
-	PARAM_SEARCH_QUERY = "q"
+	PARAM_WORD_ID = "lang_id"
 )
 
-func PageSearch(c echo.Context) error {
-
-	// Get Language info
-	langID, err := strconv.ParseUint(c.Param(PARAM_LANG_ID), 10, 64)
-	if err != nil {
-		return view.FailRequestWithError(c, "Invalid Lang-ID provided", err, "/")
-	}
-	lang, err := client.GetLangByID(langID)
-	if err != nil {
-		return view.FailRequestWithError(c, fmt.Sprintf("Failed to get info for language with ID %d", langID), err, "/")
-	}
-
-	// Search dictionary if query provided
-	var words []client.Word
-	query := c.QueryParam(PARAM_SEARCH_QUERY)
-	hasQuery := query != ""
-	if hasQuery {
-		words, err = client.SearchWords(langID, query)
-		if err != nil {
-			return view.FailRequestWithError(c, fmt.Sprintf("Query '%s' failed:", query), err, fmt.Sprint("/lang/", langID))
-		}
-	}
-
-	return view.RenderTemplate(
-		c, view.TMP_LANG_DETAIL,
-		view.Data{
-			"has_query": hasQuery,
-			"query":     query,
-			"words":     words,
-			"lang":      lang,
-		},
-	)
-}
-
-func PageSetLang(c echo.Context) error {
+func PageSetWord(c echo.Context) error {
 	// Get Language info
 	langID_s := c.Param(PARAM_LANG_ID)
 	isCreate := langID_s == ""
@@ -88,7 +53,7 @@ func PageSetLang(c echo.Context) error {
 	)
 }
 
-func HandleSetLang(c echo.Context) error {
+func HandleSetWord(c echo.Context) error {
 	langID_s := c.Param(PARAM_LANG_ID)
 	isCreate := langID_s == ""
 	redirectUrl := "/lang/set"

@@ -4,26 +4,19 @@
 
 {% block title %}
     {% if is_create %}
-        Create Language
+        Add New Word
     {% else %}
-        Edit {{lang.Name}}
+        Edit Word {{word.Romanisation}}
     {% endif %}
 {% endblock %}
 
 {% block body %}
     
-    {% if is_create %}
-        <a href="/" class="f4 link blue hover-light-blue">Back to index</a>
-    {% else %}
-        <a href="/lang/{{lang.ID|idp}}" class="f4 link blue hover-light-blue">Back to lang</a>
-    {% endif %}
+    <a href="/lang/{{plang.ID|idp}}" class="f4 link blue hover-light-blue">Back to {{plang.Name}}</a>
 
     <form method="POST" class="mv3">
-        <label for="name" class="f5-ns f4">Name</label><br>
-        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="name" value="{{lang.Name}}"><br>
-
-        <label for="name" class="f5-ns f4">Code</label><br>
-        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="code" value="{{lang.Code}}"><br>
+        <label for="name" class="f5-ns f4">Orthography</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="name" value="{{word.Orthography}}"><br>
 
         <label for="name" class="f5-ns f4">Description</label><br>
         <textarea class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" name="desc" style="resize:vertical;">{{lang.Desc}}</textarea><br>

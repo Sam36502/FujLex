@@ -1,0 +1,46 @@
+{% extends "base.twig" %}
+
+{% block head %}{% endblock %}
+
+{% block title %}
+    {% if is_create %}
+        Create Language
+    {% else %}
+        Edit {{lang.Name}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    
+    {% if is_create %}
+        <a href="/" class="f4 link blue hover-light-blue">Back to index</a>
+    {% else %}
+        <a href="/lang/{{lang.ID|idp}}" class="f4 link blue hover-light-blue">Back to {{lang.Name}}</a>
+    {% endif %}
+
+    <form method="POST" class="mv3">
+        <label for="name" class="f5-ns f4">Name</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="name" value="{{lang.Name}}"><br>
+
+        <label for="name" class="f5-ns f4">Code</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="code" value="{{lang.Code}}"><br>
+
+        <label for="name" class="f5-ns f4">Description</label><br>
+        <textarea class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" name="desc" style="resize:vertical;">{{lang.Desc}}</textarea><br>
+
+        <label for="name" class="f5-ns f4">Ancestor</label><br>
+        <select class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100 bg-white" name="ancestor">
+            <option value="">None</option>
+            {% for l in all_langs %}
+            {% if l.ID|idp != lang.ID|idp %}
+            <option value="{{l.Code}}" {% if l.Code == lang_ancestor %}selected{% endif %}>{{l.Name}}</option>
+            {% endif %}
+            {% endfor %}
+        </select><br>
+
+        <input type="submit" value="Submit" class="mt3 pa2-ns pa3 w5-ns w-100 bn white bg-light-red">
+    </form>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

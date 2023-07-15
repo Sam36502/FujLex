@@ -10,7 +10,14 @@ import (
 )
 
 const (
-	TEMPLATE_DIR = "tmpl/"
+	TEMPLATE_DIR    = "tmpl/"
+	TMP_ROOT        = "root.twig"
+	TMP_NOTICE      = "notice.twig"
+	TMP_ERR_DEBUG   = "error/debug.twig"
+	TMP_ERROR       = "error/http_error.twig"
+	TMP_LANG_DETAIL = "lang/detail.twig"
+	TMP_LANG_UPDATE = "lang/update.twig"
+	TMP_WORD_UPDATE = "word/update.twig"
 )
 
 type Data map[string]stick.Value

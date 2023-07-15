@@ -1,0 +1,41 @@
+<li class="w-100 bg-moon-gray mv2 pa3 relative">
+
+    <a href="/lang/{{word.Lang.ID|idp}}/word/set/{{word.ID|idp}}" class="f4 link blue hover-light-blue db absolute top-1 right-1">Edit Word</a>
+
+    <div class="w-100">
+        <strong class="db f2 pb2 lh-solid">
+            {{word.Romanisation}}
+        </strong>
+        <i class="db f4 pb3">
+            /{{word.Pronunciation}}/
+        </i>
+        {% if word.Tags %}
+            <i class="db f4 pb3">
+                {% for tag in word.Tags %}{{tag.Tag}}{% endfor %}
+            </i>
+        {% endif %}
+    </div>
+
+    <div class="cf">
+        <div class="fl w-50">
+            <strong class="f4">Meanings:</strong>
+            <br>
+            <i class="f5 ph3">
+                {{word.Meanings|join(', ')}}
+            </i>
+        </div>
+
+        {% if word.Etymology %}
+        <div class="fl w-25">
+            <div class="pt3">
+                <strong class="f4">Etymology:</strong>
+                <br>
+                <i class="f5 ph3">
+                    {{word.Etymology}}
+                </i>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</li>

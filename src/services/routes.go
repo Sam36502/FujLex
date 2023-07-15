@@ -23,4 +23,10 @@ func Initialise(e *echo.Echo) {
 	e.POST("/lang/set/:"+PARAM_LANG_ID, HandleSetLang)
 	e.GET("/lang/:"+PARAM_LANG_ID, PageSearch)
 
+	// Word Pages
+	e.GET("/lang/:"+PARAM_LANG_ID+"/set", PageSetWord)
+	e.POST("/lang/:"+PARAM_LANG_ID+"/set", HandleSetWord)
+	e.GET("/lang/:"+PARAM_LANG_ID+"/set/:"+PARAM_WORD_ID, PageSetWord)
+	e.POST("/lang/:"+PARAM_LANG_ID+"/set/:"+PARAM_WORD_ID, HandleSetWord)
+
 }

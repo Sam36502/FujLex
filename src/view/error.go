@@ -24,7 +24,7 @@ func FailRequestWithError(c echo.Context, msg string, err error, redirUrl string
 	if err != nil {
 		errText = err.Error()
 	}
-	return RenderTemplate(c, "errdebug.twig", Data{
+	return RenderTemplate(c, TMP_ERR_DEBUG, Data{
 		"msg":          msg,
 		"errtext":      errText,
 		"redirect_url": redirUrl,
@@ -63,7 +63,7 @@ func CustomErrorHandler(err error, c echo.Context) {
 	}
 
 	// Show error page
-	RenderTemplate(c, "error.twig", Data{
+	RenderTemplate(c, TMP_ERROR, Data{
 		"code":         code,
 		"msg":          msg,
 		"errtext":      errText,

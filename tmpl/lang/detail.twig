@@ -46,7 +46,7 @@
     {% if words|length > 0 %}
 
         <ul class="list pl0">
-        {% for word in words %}{% include "lang/word_res.twig" %}{% endfor %}
+        {% for word in words %}{% include "word/search_result.twig" %}{% endfor %}
         </ul>
 
     {% else %}
