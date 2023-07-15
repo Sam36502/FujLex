@@ -20,9 +20,28 @@ var g_tempEnv *stick.Env
 func InitTemplates() {
 	ldr := stick.NewFilesystemLoader(TEMPLATE_DIR)
 	g_tempEnv = twig.New(ldr)
+
+	// Add twig tests
+	g_tempEnv.Tests["defined"] = func(ctx stick.Context, val stick.Value, args ...stick.Value) bool {
+		return (val != nil) && (val != "")
+	}
+
+	// Add filters
+	g_tempEnv.Filters["idp"] = func(ctx stick.Context, val stick.Value, args ...stick.Value) stick.Value {
+		if p, ok := val.(*uint64); ok {
+			return *p
+		}
+
+		return val
+	}
 }
 
 func RenderTemplate(c echo.Context, tmplPath string, d Data) error {
+	ntc := GetNotice(c)
+	if ntc != nil {
+		d[NTC_PARAM] = *ntc
+	}
+
 	err := g_tempEnv.Execute(tmplPath, c.Response(), d)
 
 	if err != nil {

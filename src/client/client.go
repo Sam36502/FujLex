@@ -1,11 +1,18 @@
 package client
 
 import (
+	"bytes"
 	"encoding/json"
 	"io"
 	"net/http"
 	"net/url"
 	"strconv"
+)
+
+const (
+	CLEX_FIELD_ERRCODE = "code"
+	CLEX_FIELD_ERRMSG  = "msg"
+	CLEX_FIELD_ID      = "id"
 )
 
 type ClexiconClient struct {
@@ -54,6 +61,47 @@ func getFromURL(path []string, result interface{}, params Params) error {
 	return json.Unmarshal(data, result)
 }
 
+func putToURL(path []string, obj interface{}) (uint64, error) {
+	currURI := g_clexClient.baseURL.JoinPath(path...)
+
+	// Encode data as JSON
+	data, err := json.Marshal(obj)
+	if err != nil {
+		return 0, err
+	}
+
+	// Send object to server
+	rdr := bytes.NewReader(data)
+	req, err := http.NewRequest(http.MethodPut, currURI.String(), rdr)
+	if err != nil {
+		return 0, err
+	}
+	req.Header.Set("Content-Type", "application/json")
+	rsp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return 0, err
+	}
+
+	// Parse response
+	data, err = io.ReadAll(rsp.Body)
+	if err != nil {
+		return 0, err
+	}
+	var errResp ClexError
+	err = json.Unmarshal(data, &errResp)
+	if err == nil && errResp.Code != "" {
+		return 0, errResp
+	}
+
+	var idResp IDResponse
+	err = json.Unmarshal(data, &idResp)
+	if err != nil {
+		return 0, err
+	}
+
+	return idResp.ID, nil
+}
+
 func GetAllLangs() ([]Lang, error) {
 	var langs []Lang
 	err := getFromURL(
@@ -76,6 +124,13 @@ func GetLangByID(langID uint64) (Lang, error) {
 	return lang, err
 }
 
+func PutLang(obj Lang) (uint64, error) {
+	return putToURL(
+		[]string{"lang"},
+		obj,
+	)
+}
+
 func SearchWords(langID uint64, query string) ([]Word, error) {
 	var words []Word
 	err := getFromURL(
@@ -85,5 +140,11 @@ func SearchWords(langID uint64, query string) ([]Word, error) {
 			"q": query,
 		},
 	)
+	for i, l := range words {
+		if l.ID == nil {
+			words = words[:i]
+			break
+		}
+	}
 	return words, err
 }

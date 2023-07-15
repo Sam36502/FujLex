@@ -1,7 +1,9 @@
 package client
 
+import "fmt"
+
 type Lang struct {
-	ID            uint64   `json:"id"`
+	ID            *uint64  `json:"id,omitempty"`
 	Code          string   `json:"code"`
 	Name          string   `json:"name"`
 	Desc          string   `json:"desc"`
@@ -9,14 +11,14 @@ type Lang struct {
 }
 
 type Tag struct {
-	ID          uint64 `json:"id"`
-	Tag         string `json:"tag"`
-	Name        string `json:"name"`
-	Description string `json:"desc"`
+	ID          *uint64 `json:"id,omitempty"`
+	Tag         string  `json:"tag"`
+	Name        string  `json:"name"`
+	Description string  `json:"desc"`
 }
 
 type Word struct {
-	ID            uint64   `json:"id"`
+	ID            *uint64  `json:"id,omitempty"`
 	Orthography   string   `json:"orthography"`
 	Romanisation  string   `json:"romanisation"`
 	Pronunciation string   `json:"ipa"`
@@ -26,4 +28,17 @@ type Word struct {
 	RootWord      uint64   `json:"root"`
 	Notes         string   `json:"notes"`
 	Language      *Lang    `json:"language"`
+}
+
+type ClexError struct {
+	Code string `json:"code"`
+	Msg  string `json:"msg"`
+}
+
+type IDResponse struct {
+	ID uint64 `json:"id"`
+}
+
+func (cl ClexError) Error() string {
+	return fmt.Sprintf("[%s]: %s", cl.Code, cl.Msg)
 }

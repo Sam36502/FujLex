@@ -14,14 +14,15 @@
 
 <h2 class="f2 light-red">Available Languages</h2>
 
-<a href="/lang/set" class="f4 link blue hover-light-blue">Create New Language</a>
+<!-- Creating a new language should not be easy until I can delete them, lol -->
+<!-- a href="/lang/set" class="f4 link blue hover-light-blue">Create New Language</a -->
 
 {% if languages|length > 0 %}
 
     <ul class="list">
     {% for lang in languages %}
         <li class="pv2">
-            <a href="/lang/{{lang.ID}}" class="f4 link blue hover-light-blue">{{lang.Name}}</a>
+            <a href="/lang/{{lang.ID|idp}}" class="f4 link blue hover-light-blue">{{lang.Name}}</a>
         </li>
     {% endfor %}
     </ul>

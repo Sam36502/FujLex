@@ -1,0 +1,40 @@
+{% if ntc is defined %}
+
+{% if ntc.Type == "info" %}
+    <div class="cf mb3 pa3 w-100 white bg-blue">
+        <img src="/static/info_icon.svg" width="50" height="50" class="fl-ns mb0-ns mb2"/>
+        <div class="fl-ns w-90-ns ml3-ns">
+            <strong class="lh-copy">{{ntc.Title}}</strong>
+            <p class="ma0 lh-copy">{{ntc.Text}}</p>
+        </div>
+    </div>
+
+{% elseif ntc.Type == "error" %}
+    <div class="cf mb3 pa3 w-100 white bg-red">
+        <img src="/static/error_icon.svg" width="50" height="50" class="fl-ns mb0-ns mb2"/>
+        <div class="fl-ns w-90-ns ml3-ns">
+            <strong class="lh-copy">{{ntc.Title}}</strong>
+            <p class="ma0 lh-copy">{{ntc.Text}}</p>
+        </div>
+    </div>
+
+{% elseif ntc.Type == "succ" %}
+    <div class="cf mb3 pa3 w-100 white bg-green">
+        <img src="/static/success_icon.svg" width="50" height="50" class="fl-ns mb0-ns mb2"/>
+        <div class="fl-ns w-90-ns ml3-ns">
+            <strong class="lh-copy">{{ntc.Title}}</strong>
+            <p class="ma0 lh-copy">{{ntc.Text}}</p>
+        </div>
+    </div>
+
+{% elseif ntc.Type == "warn" %}
+    <div class="cf mb3 pa3 w-100 black bg-yellow">
+        <img src="/static/warning_icon.svg" width="50" height="50" class="fl-ns mb0-ns mb2"/>
+        <div class="fl-ns w-90-ns ml3-ns">
+            <strong class="lh-copy">{{ntc.Title}}</strong>
+            <p class="ma0 lh-copy">{{ntc.Text}}</p>
+        </div>
+    </div>
+
+{% endif %}
+{% endif %}

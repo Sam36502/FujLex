@@ -5,7 +5,8 @@
 {% block title %}{{lang.Name}}{% endblock %}
 
 {% block body %}
-<a href="/" class="f4 link blue hover-light-blue">Back to index</a>
+<a href="/" class="f4 link blue hover-light-blue db">Back to index</a><br>
+<a href="/lang/set/{{lang.ID|idp}}" class="f4 link blue hover-light-blue db">Edit Language</a>
 
 <h2 class="f2 light-red">Information</h2>
 <table class="collapse ma3 ba br2 b--black-10 pv2 ph3">
@@ -16,7 +17,7 @@
         </tr>
         <tr class="striped--light-gray">
             <td class="pv2 ph3"><strong>Unique Code</strong></td>
-            <td class="pv2 ph3"><code>{{lang.Code}}</code></td>
+            <td class="pv2 ph3">{{lang.Code}}</td>
         </tr>
         {% if lang.AncestorCodes|length > 0 %}
         <tr class="striped--light-gray">
@@ -33,7 +34,7 @@
 </p>
 
 <h2 class="f2 light-red">Search Dictionary:</h2>
-<form action="/lang/{{lang.ID}}" method="GET">
+<form method="GET">
     <div class="w-100 h3 h2-ns"> 
         <input class="f5 button-reset ba fl black-80 bg-white ph3 lh-solid h-100 w-70 w-40-ns" type="text" name="q" placeholder="search" value={{query}}>
         <input class="f5 button-reset bn fl black-80 bg-light-red lh-solid h-100 w-30 w-10-ns" type="submit" value="Search">
