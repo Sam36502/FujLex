@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block head %}{% endblock %}
+
+{% block title %}
+    {% if is_create %}
+        Add New Word
+    {% else %}
+        Edit Word {{word.Romanisation}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    
+    <a href="/lang/{{plang.ID|idp}}" class="f4 link blue hover-light-blue">Back to {{plang.Name}}</a>
+
+    <form method="POST" class="mv3">
+        <label for="name" class="f5-ns f4">Orthography</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="ortho" value="{{word.Orthography}}"><br>
+
+        <label for="name" class="f5-ns f4">Romanisation</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="roman" value="{{word.Romanisation}}"><br>
+
+        <label for="name" class="f5-ns f4">Pronunciation</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="ipa" value="{{word.Pronunciation}}"><br>
+
+        <label for="name" class="f5-ns f4">Meanings</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="gloss" value="{{word.Meanings|join(', ')}}"><br>
+
+        <label for="name" class="f5-ns f4">Tags</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="tags" value="{{tags}}"><br>
+
+        <label for="name" class="f5-ns f4">Etymology</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="etym" value="{{word.Etymology}}"><br>
+
+        <label for="name" class="f5-ns f4">Notes</label><br>
+        <textarea class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" name="notes" style="resize:vertical;">{{word.Notes}}</textarea><br>
+
+        <input type="submit" value="Submit" class="mt3 pa2-ns pa3 w5-ns w-100 bn white bg-light-red">
+    </form>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

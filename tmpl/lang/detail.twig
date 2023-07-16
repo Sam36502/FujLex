@@ -34,6 +34,9 @@
 </p>
 
 <h2 class="f2 light-red">Search Dictionary:</h2>
+
+<a href="/lang/{{lang.ID|idp}}/word/set" class="f5 link blue hover-light-blue db mb2">Add Word</a>
+
 <form method="GET">
     <div class="w-100 h3 h2-ns"> 
         <input class="f5 button-reset ba fl black-80 bg-white ph3 lh-solid h-100 w-70 w-40-ns" type="text" name="q" placeholder="search" value={{query}}>
@@ -46,7 +49,7 @@
     {% if words|length > 0 %}
 
         <ul class="list pl0">
-        {% for word in words %}{% include "lang/word_res.twig" %}{% endfor %}
+        {% for word in words %}{% include "word/search_result.twig" %}{% endfor %}
         </ul>
 
     {% else %}

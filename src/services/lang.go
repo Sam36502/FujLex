@@ -35,12 +35,12 @@ func PageSearch(c echo.Context) error {
 	if hasQuery {
 		words, err = client.SearchWords(langID, query)
 		if err != nil {
-			return view.FailRequestWithError(c, fmt.Sprintf("Query '%s' failed:", query), err, fmt.Sprint("/lang/", langID))
+			return view.FailRequestWithError(c, fmt.Sprintf("Query '%s' failed", query), err, fmt.Sprint("/lang/", langID))
 		}
 	}
 
 	return view.RenderTemplate(
-		c, "lang/detail.twig",
+		c, view.TMP_LANG_DETAIL,
 		view.Data{
 			"has_query": hasQuery,
 			"query":     query,
@@ -78,7 +78,7 @@ func PageSetLang(c echo.Context) error {
 	}
 
 	return view.RenderTemplate(
-		c, "lang/setlang.twig",
+		c, view.TMP_LANG_UPDATE,
 		view.Data{
 			"is_create":     isCreate,
 			"lang":          lang,

@@ -14,7 +14,7 @@ func PageRoot(c echo.Context) error {
 	}
 
 	return view.RenderTemplate(
-		c, "root.twig",
+		c, view.TMP_ROOT,
 		view.Data{
 			"languages": langs,
 		},

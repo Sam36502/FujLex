@@ -15,7 +15,7 @@
     {% if is_create %}
         <a href="/" class="f4 link blue hover-light-blue">Back to index</a>
     {% else %}
-        <a href="/lang/{{lang.ID|idp}}" class="f4 link blue hover-light-blue">Back to lang</a>
+        <a href="/lang/{{lang.ID|idp}}" class="f4 link blue hover-light-blue">Back to {{lang.Name}}</a>
     {% endif %}
 
     <form method="POST" class="mv3">

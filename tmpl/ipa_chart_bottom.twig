@@ -1,0 +1,426 @@
+<!--
+MIT License
+
+Copyright (c) 2004-2006 Weston Ruter
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<div id="chart">
+	<div id="otherSymbols">
+		<h2>Other Symbols</h2>
+		<table>
+			<colgroup>
+				<col width="0*" />
+				<col width="1*" />
+			</colgroup>
+			<colgroup>
+				<col width="0*" />
+				<col width="1*" />
+			</colgroup>
+			<tbody>
+			<tr>
+				<td title="U+028D: LATIN SMALL LETTER TURNED W">ʍ</td>
+				<th>Voiceless labial-velar fricative</th>
+				<td title="U+0255: LATIN SMALL LETTER C WITH CURL" class="firstOfTwoExamples">ɕ</td>
+				<td title="U+0291: LATIN SMALL LETTER Z WITH CURL" class="secondOfTwoExamples">ʑ</td>
+				<th>Alveolo-palatal fricatives</th>
+			</tr>
+			<tr>
+				<td title="U+0077: LATIN SMALL LETTER W">w</td>
+				<th>Voiced labial-velar approximant</th>
+				<td title="U+027A: LATIN SMALL LETTER TURNED R WITH LONG LEG" colspan="2">ɺ</td>
+				<th>Alveolar lateral flap</th>
+			</tr>
+			<tr>
+				<td title="U+0265: LATIN SMALL LETTER TURNED H">ɥ</td>
+				<th>Voiced labial-palatal approximant</th>
+				<td title="U+0267: LATIN SMALL LETTER HENG WITH HOOK" colspan="2">ɧ</td>
+				<th>Simultaneous <span title="U+0283: LATIN SMALL LETTER ESH" class="ipa">ʃ</span> and <span title="U+0078: LATIN SMALL LETTER X" class="ipa">x</span></th>
+			</tr>
+			<tr>
+				<td title="U+029C: LATIN LETTER SMALL CAPITAL H">ʜ</td>
+				<th>Voiceless epiglottal fricative</th>
+				
+				<th rowspan="3" colspan="3" id='tiebar'>
+					<span id="tiebarExample">
+						<span class='ipa'>k&#x0361;p</span>&nbsp;&nbsp;&nbsp;<span class='ipa'>t&#x035C;s</span><br />
+						<span class='ipa' title="U+0361: COMBINING DOUBLE INVERTED BREVE">&#x25CC;&#x0361;&#x25CC;</span>&nbsp;&nbsp;&nbsp;<span class='ipa' title="U+035C: COMBINING DOUBLE BREVE BELOW">&#x25CC;&#x035C;&#x25CC;</span>
+					</span>
+					<p>Affricates and double articulations
+					can be represented by two symbols
+					joined by a tie bar if necessary. <!--<em>Note: Unicode does not support tie bars underneath.</em>--></p>
+				</th>
+
+			</tr>
+			<tr>
+				<td title="U+02A2: LATIN LETTER REVERSED GLOTTAL STOP WITH STROKE">ʢ</td>
+				<th>Voiced epiglottal fricative</th>
+			</tr>
+			<tr>
+				<td title="U+02A1: LATIN LETTER GLOTTAL STOP WITH STROKE">ʡ</td>
+				<th>Epiglottal plosive</th>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div id="suprasegmentals">
+		<h2>Suprasegmentals</h2>
+		<table>
+			<col width="0*" />
+			<col />
+			<col width="0*" />
+			<tbody>
+				<tr>
+					<td title="U+02C8: MODIFIER LETTER VERTICAL LINE" class="symbol">ˈ</td>
+					<th colspan="2">Primary stress</th>
+				</tr>
+				<tr>
+					<td title="U+02CC: MODIFIER LETTER LOW VERTICAL LINE" class="symbol">ˌ</td>
+					<th colspan="2">Secondary stress</th>
+				</tr>
+				<tr>
+					<td colspan="3" id="stressExample">ˌfoʊnəˈtɪʃən</td>
+				</tr>
+				<tr>
+					<td title="U+02D0: MODIFIER LETTER TRIANGULAR COLON" class="symbol">ː</td>
+					<th>Long</th>
+					<td class="example">eː</td>
+				</tr>
+				<tr>
+					<td title="U+02D1: MODIFIER LETTER HALF TRIANGULAR COLON" class="symbol">ˑ</td>
+					<th>Half-long</th>
+					<td class="example">eˑ</td>
+				</tr>
+				<tr>
+					<td title="U+0306: COMBINING BREVE" class="symbol">&#x25CC;&#x306;</td>
+					<th>Extra short</th>
+					<td class="example">ĕ</td>
+				</tr>
+				<tr>
+					<td title="U+007C: VERTICAL LINE" class="symbol">|</td>
+					<th colspan="2">Minor (foot) group</th>
+				</tr>
+				<tr>
+					<td title="U+2016: DOUBLE VERTICAL LINE" class="symbol">‖</td>
+					<th colspan="2">Major (intonation) group</th>
+				</tr>
+				<tr>
+					<td title="U+002E: FULL STOP" class="symbol">.</td>
+					<th>Syllable break</th>
+					<td class="example">ɹi.ækt</td>
+				</tr>
+				<tr>
+					<td title="U+203F: UNDERTIE" class="symbol">‿</td>
+					<th colspan="2">Linking (absence of a break)</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+
+	<div id="diacritics">
+		<h2>Diacritics</h2>
+		<p>Diacritics may be placed above a symbol with a descender, e.g. <span class="ipa">ŋ̊</span></p>
+		<table>
+			<colgroup span="4">
+				<col width="0*" />
+				<col />
+				<col width="0*" />
+				<col width="0*" />
+			</colgroup>
+			<colgroup span="4">
+				<col width="0*" />
+				<col />
+				<col width="0*" />
+				<col width="0*" />
+			</colgroup>
+			<colgroup span="4">
+				<col width="0*" />
+				<col />
+				<col width="0*" />
+				<col width="0*" />
+			</colgroup>
+			<tbody>
+				<tr>
+					<td title="U+0325: COMBINING RING BELOW">&#x25CC;&#x325;</td>
+					<th>Voiceless</th>
+					<td class="leftExample">n̥</td>
+					<td class="rightExample">d̥</td>
+					
+					<td title="U+0324: COMBINING DIAERESIS BELOW">&#x25CC;&#x324;</td>
+					<th>Breathy voiced</th>
+					<td class="leftExample">b̤</td>
+					<td class="rightExample">a̤</td>
+					
+					<td title="U+032A: COMBINING BRIDGE BELOW">&#x25CC;&#x32A;</td>
+					<th>Dental</th>
+					<td class="leftExample">t̪</td>
+					<td class="rightExample">d̪</td>
+				</tr>
+				<tr>
+					<td title="U+032C: COMBINING CARON BELOW">&#x25CC;&#x32C;</td>
+					<th>Voiced</th>
+					<td class="leftExample">s̬</td>
+					<td class="rightExample">t̬</td>
+					
+					<td title="U+0330: COMBINING TILDE BELOW">&#x25CC;&#x330;</td>
+					<th>Creaky voiced</th>
+					<td class="leftExample">b̰</td>
+					<td class="rightExample">a̰</td>
+					
+					<td title="U+033A: COMBINING INVERTED BRIDGE BELOW">&#x25CC;&#x33A;</td>
+					<th>Apical</th>
+					<td class="leftExample">t̺</td>
+					<td class="rightExample">d̺</td>
+				</tr>
+				<tr>
+					<td title="U+02B0: MODIFIER LETTER SMALL H">ʰ</td>
+					<th>Aspirated</th>
+					<td class="leftExample">tʰ</td>
+					<td class="rightExample">dʰ</td>
+					
+					<td title="U+033C: COMBINING SEAGULL BELOW">&#x25CC;&#x33C;</td>
+					<th>Linguolabial</th>
+					<td class="leftExample">t̼</td>
+					<td class="rightExample">d̼</td>
+					
+					<td title="U+033B: COMBINING SQUARE BELOW">&#x25CC;&#x33B;</td>
+					<th>Laminal</th>
+					<td class="leftExample">t̻</td>
+					<td class="rightExample">d̻</td>
+				</tr>
+				<tr>
+					<td title="U+0339: COMBINING RIGHT HALF RING BELOW">&#x25CC;&#x339;</td>
+					<th>More rounded</th>
+					<td class="leftExample">ɔ̹</td>
+					<td class="rightExample"></td>
+					
+					<td title="U+02B7: MODIFIER LETTER SMALL W">ʷ</td>
+					<th>Labalized</th>
+					<td class="leftExample">tʷ</td>
+					<td class="rightExample">dʷ</td>
+					
+					<td title="U+0303: COMBINING TILDE">&#x25CC;&#x303;</td>
+					<th colspan="2">Nasalized</th>
+					<td class="rightExample">ẽ</td>
+				</tr>
+				<tr>
+					<td title="U+031C: COMBINING LEFT HALF RING BELOW">&#x25CC;&#x31C;</td>
+					<th>Less rounded</th>
+					<td class="leftExample">ɔ̜</td>
+					<td class="rightExample"></td>
+					
+					<td title="U+02B2: MODIFIER LETTER SMALL J">ʲ</td>
+					<th>Palatalized</th>
+					<td class="leftExample">tʲ</td>
+					<td class="rightExample">dʲ</td>
+					
+					<td title="U+207F: SUPERSCRIPT LATIN SMALL LETTER N">ⁿ</td>
+					<th colspan="2">Nasal release</th>
+					<td class="rightExample">dⁿ</td>
+				</tr>
+				<tr>
+					<td title="U+031F: COMBINING PLUS SIGN BELOW">&#x25CC;&#x31F;</td>
+					<th>Advanced</th>
+					<td class="leftExample">u̟</td>
+					<td class="rightExample"></td>
+					
+					<td title="U+02E0: MODIFIER LETTER SMALL GAMMA">ˠ</td>
+					<th>Velarized</th>
+					<td class="leftExample">tˠ</td>
+					<td class="rightExample">dˠ</td>
+					
+					<td title="U+02E1: MODIFIER LETTER SMALL L">ˡ</td>
+					<th colspan="2">Lateral release</th>
+					<td class="rightExample">dˡ</td>
+				</tr>
+				<tr>
+					<td title="U+0320: COMBINING MINUS SIGN BELOW">&#x25CC;&#x320;</td>
+					<th>Retracted</th>
+					<td class="leftExample">e̠</td>
+					<td class="rightExample"></td>
+					
+					<td title="U+02E4: MODIFIER LETTER SMALL REVERSED GLOTTAL STOP">ˤ</td>
+					<th>Pharyngealized</th>
+					<td class="leftExample">tˤ</td>
+					<td class="rightExample">dˤ</td>
+					
+					<td title="U+031A: COMBINING LEFT ANGLE ABOVE">&#x25CC;&#x31A;</td>
+					<th colspan="2">No audible release</th>
+					<td class="rightExample">d̚</td>
+				</tr>
+				<tr>
+					<td title="U+0308: COMBINING DIAERESIS">&#x25CC;&#x308;</td>
+					<th>Centralized</th>
+					<td class="leftExample">ë</td>
+					<td class="rightExample"></td>
+					
+					<td title="U+0334: COMBINING TILDE OVERLAY">&#x25CC;&#x334;<!--~--></td>
+					<th colspan="2">Velarized or pharyngealized</th>
+					<td title="U+026B: LATIN SMALL LETTER L WITH MIDDLE TILDE" class="wideCell" colspan="5">ɫ</td>
+					<!--<th colspan="4"></th>-->
+				</tr>
+				<tr>
+					<td title="U+033D: COMBINING X ABOVE">&#x25CC;&#x33D;</td>
+					<th>Mid-centralized</th>
+					<td class="leftExample">e̽</td>
+					<td class="rightExample"></td>
+					
+					<td title="U+031D: COMBINING UP TACK BELOW">&#x25CC;&#x31D;</td>
+					<th>Raised</th>
+					<td class="leftExample">e̝</td>
+					<th colspan="5" class="wideCell">(<span class="ipa">ɹ̝</span> = voiced alveolar fricative)</th>
+				</tr>
+				<tr>
+					<td title="U+0329: COMBINING VERTICAL LINE BELOW">&#x25CC;&#x329;</td>
+					<th>Syllabic</th>
+					<td class="leftExample">n̩</td>
+					<td class="rightExample"></td>
+					
+					<td title="U+031E: COMBINING DOWN TACK BELOW">&#x25CC;&#x31E;</td>
+					<th>Lowered</th>
+					<td class="leftExample">e̞</td>
+					<th colspan="5" class="wideCell">(<span class="ipa">β̞</span> = voiced bilabial approximant)</th>
+				</tr>
+				<tr>
+					<td title="U+032F: COMBINING INVERTED BREVE BELOW">&#x25CC;&#x32F;</td>
+					<th>Non-syllabic</th>
+					<td class="leftExample">e̯</td>
+					<td class="rightExample"></td>
+					
+					<td title="U+0318: COMBINING LEFT TACK BELOW">&#x25CC;&#x318;</td>
+					<th colspan="2">Advanced Tongue Root</th>
+					<td class="wideCell" colspan="5">e̘</td>
+					<!--<th colspan="4"></th>-->
+				</tr>
+				<tr>
+					<td title="U+02DE: MODIFIER LETTER RHOTIC HOOK">˞</td>
+					<th>Rhoticity</th>
+					<!--<td class="leftExample">ə˞</td>-->
+					<td class="leftExample" title="U+025A: LATIN SMALL LETTER SCHWA WITH HOOK">&#x025A;</td>
+					<td class="rightExample">a˞</td>
+					
+					<td title="U+0319: COMBINING RIGHT TACK BELOW">&#x25CC;&#x319;</td>
+					<th colspan="2">Retracted Tongue Root</th>
+					<td class="wideCell" colspan="5">e̙</td>
+					<!--<th colspan="4"></th>-->
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div id="tonesAndWordAccents">
+		<h2>Tones and Word Accents</h2>
+		<table>
+			<colgroup span="4">
+				<col />
+				<col width="0*" />
+				<col />
+				<col />
+			</colgroup>
+			<colgroup span="3" width="0*" />
+			<thead>
+				<tr>
+					<th colspan="4">Level</th>
+					<th colspan="4">Contour</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td title="U+030B: COMBINING DOUBLE ACUTE ACCENT">e̋</td>
+					<th class="or">or</th>
+					<td title="U+02E5: MODIFIER LETTER EXTRA-HIGH TONE BAR">&#x02E5;</td>
+					<th>Extra high</th>
+					
+					<td title="U+030C: COMBINING CARON">ě</td>
+					<th class="or">or</th>
+					<td title="U+02E9 MODIFIER LETTER EXTRA-LOW TONE BAR, U+02E5 MODIFIER LETTER EXTRA-HIGH TONE BAR">&#x02E9;&#x02E5;</td>
+					<th>Rising</th>
+				</tr>
+				<tr>
+					<td title="U+0301: COMBINING ACUTE ACCENT">é</td>
+					<th class="or"></th>
+					<td title="U+02E6 MODIFIER LETTER HIGH TONE BAR" >&#x02E6;</td>
+					<th>High</th>
+					
+					<td title="U+0302: COMBINING CIRCUMFLEX ACCENT">ê</td>
+					<th class="or"></th>
+					<td title="U+02E5 MODIFIER LETTER EXTRA-HIGH TONE BAR, U+02E9 MODIFIER LETTER EXTRA-LOW TONE BAR">&#x02E5;&#x02E9;</td>
+					<th>Falling</th>
+				</tr>
+				<tr>
+					<td title="U+0304: COMBINING MACRON">ē</td>
+					<th class="or"></th>
+					<td title="U+02E7: MODIFIER LETTER MID TONE BAR">&#x02E7;</td>
+					<th>Mid</th>
+					
+					<td title="U+1DC4: COMBINING MACRON-ACUTE">e&#x1DC4;</td>
+					<th class="or"></th>
+					<td title="U+02E6 MODIFIER LETTER HIGH TONE BAR, U+02E5 MODIFIER LETTER EXTRA-HIGH TONE BAR">&#x02E6;&#x02E5;</td>
+					<th>High rising</th>
+				</tr>
+				<tr>
+					<td title="U+0300: COMBINING GRAVE ACCENT">è</td>
+					<th class="or"></th>
+					<td title="U+02E8: MODIFIER LETTER LOW TONE BAR">&#x02E8;</td>
+					<th>Low</th>
+					
+					<td title="U+1DC5: COMBINING GRAVE-MACRON">e&#x1DC5;</td>
+					<th class="or"></th>
+					<td title="U+02E9 MODIFIER LETTER EXTRA-LOW TONE BAR, U+02E8 MODIFIER LETTER LOW TONE BAR">&#x02E9;&#x02E8;</td>
+					<th>Low rising</th>
+				</tr>
+				<tr>
+					<td title="U+030F: COMBINING DOUBLE GRAVE ACCENT">ȅ</td>
+					<th class="or"></th>
+					<td title="U+02E9: MODIFIER LETTER EXTRA-LOW TONE BAR">&#x02E9;</td>
+					<th>Extra low</th>
+
+					<td title="U+1DC8: COMBINING GRAVE-ACUTE-GRAVE">e&#x1DC8;</td>
+					<th class="or"></th>
+					<td title="U+02E7 MODIFIER LETTER MID TONE BAR, U+02E6 MODIFIER LETTER HIGH TONE BAR, U+02E7 MODIFIER LETTER MID TONE BAR">&#x02E7;&#x02E6;&#x02E7;</td>
+					<th>Rising-falling</th>
+				</tr>
+				<!-- Note: there are more tone contour letters than displayed on the official chart -->
+				<tr>
+					<td title="U+2193: DOWNWARDS ARROW">↓</td>
+					<th colspan="3">Downstep</th>
+					
+					<td title="U+2197: NORTH EAST ARROW">↗</td>
+					<th colspan="3">Global rise</th>
+				</tr>
+				<tr>
+					<td title="U+2191: UPWARDS ARROW">↑</td>
+					<th colspan="3">Upstep</th>
+					
+					<td title="U+2198: SOUTH EAST ARROW">↘</td>
+					<th colspan="3">Global fall</th>
+				</tr>
+			</tbody>
+			</table>
+	</div>
+</div>
+<div id="footer">
+	<div id='copyright'>The <!--<a href="http://www.arts.gla.ac.uk/IPA/ipa.html">-->International
+	Phonetic Association<!--</a>--> is the copyright owner of the
+	International Phonetic Alphabet and the IPA chart.
+	The code is copyright &copy; 2004-2009, Weston Ruter.</div>
+	</div>
+</div>
