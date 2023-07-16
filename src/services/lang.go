@@ -35,7 +35,7 @@ func PageSearch(c echo.Context) error {
 	if hasQuery {
 		words, err = client.SearchWords(langID, query)
 		if err != nil {
-			return view.FailRequestWithError(c, fmt.Sprintf("Query '%s' failed:", query), err, fmt.Sprint("/lang/", langID))
+			return view.FailRequestWithError(c, fmt.Sprintf("Query '%s' failed", query), err, fmt.Sprint("/lang/", langID))
 		}
 	}
 

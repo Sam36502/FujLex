@@ -24,9 +24,9 @@ func Initialise(e *echo.Echo) {
 	e.GET("/lang/:"+PARAM_LANG_ID, PageSearch)
 
 	// Word Pages
-	e.GET("/lang/:"+PARAM_LANG_ID+"/set", PageSetWord)
-	e.POST("/lang/:"+PARAM_LANG_ID+"/set", HandleSetWord)
-	e.GET("/lang/:"+PARAM_LANG_ID+"/set/:"+PARAM_WORD_ID, PageSetWord)
-	e.POST("/lang/:"+PARAM_LANG_ID+"/set/:"+PARAM_WORD_ID, HandleSetWord)
+	e.GET("/lang/:"+PARAM_LANG_ID+"/word/set", PageSetWord)
+	e.POST("/lang/:"+PARAM_LANG_ID+"/word/set", HandleSetWord)
+	e.GET("/lang/:"+PARAM_LANG_ID+"/word/set/:"+PARAM_WORD_ID, PageSetWord)
+	e.POST("/lang/:"+PARAM_LANG_ID+"/word/set/:"+PARAM_WORD_ID, HandleSetWord)
 
 }

@@ -11,7 +11,7 @@ This is a basic front-end for [my very simple lexicon-API](https://github.com/Sa
  - [X] Set up echo framework with template rendering
  - [X] Set up proper neat error handling
  - [X] Make lang-info / search page
- - [ ] Make add/edit word page
- - [ ] Make add/edit lang page
+ - [X] Make add/edit word page
+ - [X] Make add/edit lang page
  - [ ] Make add/edit tag page
  - [X] Dockerisation babey

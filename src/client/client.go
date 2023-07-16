@@ -118,7 +118,7 @@ func GetLangByID(langID uint64) (Lang, error) {
 		[]string{"lang"},
 		&lang,
 		Params{
-			"id": strconv.FormatInt(int64(langID), 10),
+			"id": strconv.FormatUint(langID, 10),
 		},
 	)
 	return lang, err
@@ -134,10 +134,10 @@ func PutLang(obj Lang) (uint64, error) {
 func GetWordByID(langID uint64, wordID uint64) (Word, error) {
 	var word Word
 	err := getFromURL(
-		[]string{"lang", strconv.FormatInt(int64(langID), 10), "word"},
+		[]string{"lang", strconv.FormatUint(langID, 10), "word"},
 		&word,
 		Params{
-			"id": strconv.FormatInt(int64(wordID), 10),
+			"id": strconv.FormatUint(wordID, 10),
 		},
 	)
 	return word, err
@@ -145,7 +145,7 @@ func GetWordByID(langID uint64, wordID uint64) (Word, error) {
 
 func PutWord(obj Word) (uint64, error) {
 	return putToURL(
-		[]string{"lang", strconv.FormatInt(int64(*obj.Language.ID), 10), "word"},
+		[]string{"lang", strconv.FormatUint(*obj.Language.ID, 10), "word"},
 		obj,
 	)
 }
@@ -153,7 +153,7 @@ func PutWord(obj Word) (uint64, error) {
 func SearchWords(langID uint64, query string) ([]Word, error) {
 	var words []Word
 	err := getFromURL(
-		[]string{"lang", strconv.FormatInt(int64(langID), 10), "search"},
+		[]string{"lang", strconv.FormatUint(langID, 10), "search"},
 		&words,
 		Params{
 			"q": query,
@@ -166,4 +166,16 @@ func SearchWords(langID uint64, query string) ([]Word, error) {
 		}
 	}
 	return words, err
+}
+
+func GetTagByCode(code string) (Tag, error) {
+	var tag Tag
+	err := getFromURL(
+		[]string{"lang"},
+		&tag,
+		Params{
+			"tag": code,
+		},
+	)
+	return tag, err
 }

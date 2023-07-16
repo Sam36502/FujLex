@@ -10,12 +10,16 @@
             {% block tabtitle %}Clexicon{% endblock %}
         </title>
 
+        {% if show_IPA %}<link rel='stylesheet' type='text/css' href='/static/ipa_chart.css' />{% endif %}
+
         {% block head %}{% endblock %}
     </head>
     <body class="helvetica bg-near-white near-black">
 
         <!-- Left -->
-        <div class="fl w-0 w-third-ns pa2"></div>
+        <div class="fl w-third db-ns dn pa4">
+        {% if show_IPA %}{% include "ipa_chart_top.twig" %}{% endif %}
+        </div>
         
         <!-- Main Content -->
         <div class="fl w-100 w-third-ns pa2">
@@ -25,7 +29,9 @@
         </div>
         
         <!-- Right -->
-        <div class="fl w-0 w-third-ns"></div>
+        <div class="fl w-third db-ns dn pa4">
+        {% if show_IPA %}{% include "ipa_chart_bottom.twig" %}{% endif %}
+        </div>
 
         {% block scripts %}{% endblock %}
 

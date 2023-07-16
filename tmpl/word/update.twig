@@ -16,20 +16,25 @@
 
     <form method="POST" class="mv3">
         <label for="name" class="f5-ns f4">Orthography</label><br>
-        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="name" value="{{word.Orthography}}"><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="ortho" value="{{word.Orthography}}"><br>
 
-        <label for="name" class="f5-ns f4">Description</label><br>
-        <textarea class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" name="desc" style="resize:vertical;">{{lang.Desc}}</textarea><br>
+        <label for="name" class="f5-ns f4">Romanisation</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="roman" value="{{word.Romanisation}}"><br>
 
-        <label for="name" class="f5-ns f4">Ancestor</label><br>
-        <select class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100 bg-white" name="ancestor">
-            <option value="">None</option>
-            {% for l in all_langs %}
-            {% if l.ID|idp != lang.ID|idp %}
-            <option value="{{l.Code}}" {% if l.Code == lang_ancestor %}selected{% endif %}>{{l.Name}}</option>
-            {% endif %}
-            {% endfor %}
-        </select><br>
+        <label for="name" class="f5-ns f4">Pronunciation</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="ipa" value="{{word.Pronunciation}}"><br>
+
+        <label for="name" class="f5-ns f4">Meanings</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="gloss" value="{{word.Meanings|join(', ')}}"><br>
+
+        <label for="name" class="f5-ns f4">Tags</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="tags" value="{{tags}}"><br>
+
+        <label for="name" class="f5-ns f4">Etymology</label><br>
+        <input class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" type="text" name="etym" value="{{word.Etymology}}"><br>
+
+        <label for="name" class="f5-ns f4">Notes</label><br>
+        <textarea class="mt1 mb3 pa2-ns pa3 ba f5-ns f4 w-100" name="notes" style="resize:vertical;">{{word.Notes}}</textarea><br>
 
         <input type="submit" value="Submit" class="mt3 pa2-ns pa3 w5-ns w-100 bn white bg-light-red">
     </form>
